@@ -10,20 +10,21 @@ import './App.css'
 function App() {
   const [creators, setCreators] = useState([])
 
+  async function fetchCreators() {
+    const { data, error } = await supabase.from('creator').select()
+    if (error) console.error(error)
+    else setCreators(data)
+  }
+
   useEffect(() => {
-    async function fetchCreators() {
-      const { data, error } = await supabase.from('creator').select()
-      if (error) console.error(error)
-      else setCreators(data)
-    }
     fetchCreators()
   }, [])
 
   const element = useRoutes([
     { path: '/', element: <ShowCreators creators={creators} /> },
     { path: '/creators/:id', element: <ViewCreator /> },
-    { path: '/creators/:id/edit', element: <EditCreator /> },
-    { path: '/new', element: <AddCreator /> },
+    { path: '/creators/:id/edit', element: <EditCreator onSuccess={fetchCreators} /> },
+    { path: '/new', element: <AddCreator onSuccess={fetchCreators} /> },
   ])
 
   return element

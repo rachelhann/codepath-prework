@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 
 function ShowCreators({ creators = [] }) {
   return (
     <div>
       <h1>Content Creators</h1>
+      <Link to="/new"><button>Add Creator</button></Link>
       {creators.length === 0 ? (
         <p>No content creators yet. Add one!</p>
       ) : (
@@ -11,6 +13,7 @@ function ShowCreators({ creators = [] }) {
           {creators.map((creator) => (
             <Card
               key={creator.id}
+              id={creator.id}
               name={creator.name}
               url={creator.url}
               description={creator.description}

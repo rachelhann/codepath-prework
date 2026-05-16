@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { supabase } from '../client';
 
-function AddCreator({ onAdd }) {
+function AddCreator({ onSuccess }) {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
     url: '',
@@ -12,10 +15,11 @@ function AddCreator({ onAdd }) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    onAdd(form);
-    setForm({ name: '', url: '', description: '', imageURL: '' });
+    const { error } = await supabase.from('creator').insert([form]);
+    if (error) console.error(error);
+    else { await onSuccess(); navigate('/'); }
   }
 
   return (

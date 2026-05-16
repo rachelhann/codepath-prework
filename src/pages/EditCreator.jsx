@@ -1,20 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { supabase } from '../client';
 
-function EditCreator({ creator, onSave }) {
+function EditCreator({ onSuccess }) {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: creator?.name || '',
-    url: creator?.url || '',
-    description: creator?.description || '',
-    imageURL: creator?.imageURL || '',
+    name: '',
+    url: '',
+    description: '',
+    imageURL: '',
   });
+
+  useEffect(() => {
+    async function fetchCreator() {
+      const { data, error } = await supabase
+        .from('creator')
+        .select()
+        .eq('id', id);
+      if (error) console.error(error);
+      else setForm(data[0]);
+    }
+    fetchCreator();
+  }, [id]);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    onSave(form);
+    const { id: _, ...updateData } = form;
+    const { error } = await supabase
+      .from('creator')
+      .update(updateData)
+      .eq('id', id);
+    if (error) console.error(error);
+    else { await onSuccess(); navigate('/'); }
   }
 
   return (
@@ -35,7 +57,7 @@ function EditCreator({ creator, onSave }) {
         </label>
         <label>
           Image URL (optional)
-          <input name="imageURL" value={form.imageURL} onChange={handleChange} />
+          <input name="imageURL" value={form.imageURL || ''} onChange={handleChange} />
         </label>
         <button type="submit">Save Changes</button>
       </form>

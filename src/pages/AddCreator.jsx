@@ -6,13 +6,17 @@ function AddCreator({ onSuccess }) {
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
-    url: '',
     description: '',
     imageURL: '',
+    youtube: '',
+    x: '',
+    instagram: '',
   });
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const socials = ['youtube', 'x', 'instagram'];
+    setForm({ ...form, [name]: socials.includes(name) ? value.replace('@', '') : value });
   }
 
   async function handleSubmit(e) {
@@ -31,10 +35,6 @@ function AddCreator({ onSuccess }) {
           <input name="name" value={form.name} onChange={handleChange} required />
         </label>
         <label>
-          URL
-          <input name="url" value={form.url} onChange={handleChange} required />
-        </label>
-        <label>
           Description
           <textarea name="description" value={form.description} onChange={handleChange} required />
         </label>
@@ -42,7 +42,22 @@ function AddCreator({ onSuccess }) {
           Image URL (optional)
           <input name="imageURL" value={form.imageURL} onChange={handleChange} />
         </label>
-        <button type="submit">Add Creator</button>
+        <label>
+          YouTube handle (optional)
+          <input name="youtube" value={form.youtube} onChange={handleChange}/>
+        </label>
+        <label>
+          X / Twitter handle (optional)
+          <input name="x" value={form.x} onChange={handleChange}/>
+        </label>
+        <label>
+          Instagram handle (optional)
+          <input name="instagram" value={form.instagram} onChange={handleChange}/>
+        </label>
+        <div className="form-buttons">
+          <button type="submit">Add Creator</button>
+          <button type="button" onClick={() => navigate('/')}>Cancel</button>
+        </div>
       </form>
     </div>
   );

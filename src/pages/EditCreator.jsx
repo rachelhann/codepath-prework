@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
+
 function EditCreator({ onSuccess }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const [form, setForm] = useState({
     name: '',
-    url: '',
     description: '',
     imageURL: '',
+    youtube: '',
+    x: '',
+    instagram: '',
   });
 
   useEffect(() => {
@@ -24,7 +27,9 @@ function EditCreator({ onSuccess }) {
   }, [id]);
 
   function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const socials = ['youtube', 'x', 'instagram'];
+    setForm({ ...form, [name]: socials.includes(name) ? value.replace('@', '') : value });
   }
 
   async function handleSubmit(e) {
@@ -44,22 +49,33 @@ function EditCreator({ onSuccess }) {
       <form onSubmit={handleSubmit}>
         <label>
           Name
-          <input name="name" value={form.name} onChange={handleChange} required />
-        </label>
-        <label>
-          URL
-          <input name="url" value={form.url} onChange={handleChange} required />
+          <input name="name" value={form.name || ''} onChange={handleChange} required />
         </label>
         <label>
           Description
-          <textarea name="description" value={form.description} onChange={handleChange} required />
+          <textarea name="description" value={form.description || ''} onChange={handleChange} required />
+        </label>
+        <label>
+          YouTube handle (optional)
+          <input name="youtube" value={form.youtube || ''} onChange={handleChange}/>
+        </label>
+        <label>
+          X handle (optional)
+          <input name="x" value={form.x || ''} onChange={handleChange}/>
+        </label>
+        <label>
+          Instagram handle (optional)
+          <input name="instagram" value={form.instagram || ''} onChange={handleChange}/>
         </label>
         <label>
           Image URL (optional)
           <input name="imageURL" value={form.imageURL || ''} onChange={handleChange} />
         </label>
-        <button type="submit">Save Changes</button>
-        <button type="button" onClick={() => navigate('/')}>Cancel</button>
+        <div className="form-buttons">
+          <button type="submit">Save Changes</button>
+          <button type="button" onClick={() => navigate('/')}>Cancel</button>
+        
+        </div>
       </form>
     </div>
   );

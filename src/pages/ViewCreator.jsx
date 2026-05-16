@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
+
+function toUrl(value, base) {
+  if (!value) return null;
+  return value.startsWith('http') ? value : `${base}${value}`;
+}
 
 function ViewCreator() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [creator, setCreator] = useState(null);
 
   useEffect(() => {
@@ -25,12 +31,24 @@ function ViewCreator() {
       {creator.imageURL && <img src={creator.imageURL} alt={creator.name} />}
       <h1>{creator.name}</h1>
       <p>{creator.description}</p>
-      <a href={creator.url} target="_blank" rel="noreferrer">
-        {creator.url}
-      </a>
-      <Link to={`/creators/${creator.id}/edit`}>
-        <button>Edit</button>
-      </Link>
+      <div className="card-socials">
+        {creator.youtube && (
+          <a href={toUrl(creator.youtube, 'https://youtube.com/@')} target="_blank" rel="noreferrer" title="YouTube">
+            <img src="https://cdn.simpleicons.org/youtube/white" alt="YouTube" className="social-icon" />
+          </a>
+        )}
+        {creator.x && (
+          <a href={toUrl(creator.x, 'https://x.com/')} target="_blank" rel="noreferrer" title="X">
+            <img src="https://cdn.simpleicons.org/x/white" alt="X" className="social-icon" />
+          </a>
+        )}
+        {creator.instagram && (
+          <a href={toUrl(creator.instagram, 'https://instagram.com/')} target="_blank" rel="noreferrer" title="Instagram">
+            <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram" className="social-icon" />
+          </a>
+        )}
+      </div>
+      <button onClick={() => navigate(`/creators/${creator.id}/edit`)}>Edit</button>
     </div>
   );
 }

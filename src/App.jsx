@@ -1,95 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { useState, useEffect } from 'react'
+import { useRoutes } from 'react-router-dom'
+import { supabase } from './client'
+import ShowCreators from './pages/ShowCreators'
+import ViewCreator from './pages/ViewCreator'
+import EditCreator from './pages/EditCreator'
+import AddCreator from './pages/AddCreator'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [creators, setCreators] = useState([])
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-        </div>
-        <div>
-          <h1>Welcome to the CreatorVerse!</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 2)}
-        >
-          Count is {count} 
-        </button>
-      </section>
+  useEffect(() => {
+    async function fetchCreators() {
+      const { data, error } = await supabase.from('creator').select()
+      if (error) console.error(error)
+      else setCreators(data)
+    }
+    fetchCreators()
+  }, [])
 
-      <div className="ticks"></div>
+  const element = useRoutes([
+    { path: '/', element: <ShowCreators creators={creators} /> },
+    { path: '/creators/:id', element: <ViewCreator /> },
+    { path: '/creators/:id/edit', element: <EditCreator /> },
+    { path: '/new', element: <AddCreator /> },
+  ])
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+  return element
 }
 
 export default App

@@ -21,7 +21,7 @@ function App() {
   }, [])
 
   const element = useRoutes([
-    { path: '/', element: <ShowCreators creators={creators} /> },
+    { path: '/', element: <ShowCreators creators={creators} onDelete={fetchCreators} /> },
     { path: '/creators/:id', element: <ViewCreator /> },
     { path: '/creators/:id/edit', element: <EditCreator onSuccess={fetchCreators} /> },
     { path: '/new', element: <AddCreator onSuccess={fetchCreators} /> },

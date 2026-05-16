@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
-
 function EditCreator({ onSuccess }) {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -60,6 +59,7 @@ function EditCreator({ onSuccess }) {
           <input name="imageURL" value={form.imageURL || ''} onChange={handleChange} />
         </label>
         <button type="submit">Save Changes</button>
+        <button type="button" onClick={() => navigate('/')}>Cancel</button>
       </form>
     </div>
   );

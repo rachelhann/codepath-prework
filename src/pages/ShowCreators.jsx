@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Card from '../components/Card';
 
-function ShowCreators({ creators = [] }) {
+function ShowCreators({ creators = [], onDelete }) {
   return (
     <div>
       <h1>Content Creators</h1>
@@ -18,6 +18,7 @@ function ShowCreators({ creators = [] }) {
               url={creator.url}
               description={creator.description}
               imageURL={creator.imageURL}
+              onDelete={onDelete}
             />
           ))}
         </div>

@@ -12,6 +12,19 @@
 
 ---
 
+## 🚀 Getting Started
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+npm run dev
+```
+
+Then open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
 ## ✅ Required Features
 
 The following **required** functionality is completed:
@@ -53,6 +66,8 @@ Here's a walkthrough of implemented required features:
 <img width="1264" height="560" alt="GIF Walkthrough" src="https://github.com/user-attachments/assets/4bf5ac28-df4e-4f3a-a274-2b7694620b64" />
 
 GIF created with EzGIF
+
+---
 
 ## Notes
 

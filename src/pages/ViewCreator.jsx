@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
-
-function toUrl(value, base) {
-  if (!value) return null;
-  return value.startsWith('http') ? value : `${base}${value}`;
-}
+import { toUrl } from '../utils';
 
 function ViewCreator() {
   const { id } = useParams();

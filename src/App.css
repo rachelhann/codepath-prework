@@ -81,6 +81,7 @@
   width: 1226px;
   max-width: 100%;
   margin: 0 auto;
+  padding-top: 24px;
 }
 
 .creators-grid {
@@ -193,6 +194,105 @@
 .social-icon {
   width: 22px;
   height: 22px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #111118;
+  border: 1px solid #1a1a24;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.modal h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 32px;
+  margin: 0 0 12px;
+  color: #f3f4f6;
+}
+
+.modal p {
+  color: #9ca3af;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.modal strong {
+  color: #f3f4f6;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.modal-buttons button {
+  flex: 1;
+  margin: 0 !important;
+}
+
+.modal-delete-btn {
+  background: #e53e3e !important;
+  border-color: #e53e3e !important;
+}
+
+.modal-delete-btn:hover {
+  background: #c53030 !important;
+  border-color: #c53030 !important;
+}
+
+.creator-modal {
+  max-width: 500px;
+  padding: 0 0 24px;
+  overflow: hidden;
+}
+
+.creator-modal-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+
+.creator-modal h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  margin: 0 24px 8px;
+  color: #f3f4f6;
+}
+
+.creator-modal-desc {
+  color: #9ca3af;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 24px 16px !important;
+}
+
+.creator-modal .card-socials {
+  margin: 0 0 16px;
+}
+
+.creator-modal .modal-buttons {
+  padding: 0 24px;
+}
+
+.card {
+  cursor: pointer;
 }
 
 .form-buttons {

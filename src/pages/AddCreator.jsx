@@ -7,10 +7,10 @@ function AddCreator({ onSuccess }) {
   const [form, setForm] = useState({
     name: '',
     description: '',
-    imageURL: '',
     youtube: '',
     x: '',
     instagram: '',
+    imageURL: '',
   });
 
   function handleChange(e) {
@@ -39,20 +39,20 @@ function AddCreator({ onSuccess }) {
           <textarea name="description" value={form.description} onChange={handleChange} required />
         </label>
         <label>
-          Image URL (optional)
-          <input name="imageURL" value={form.imageURL} onChange={handleChange} />
-        </label>
-        <label>
           YouTube handle (optional)
-          <input name="youtube" value={form.youtube} onChange={handleChange}/>
+          <input name="youtube" value={form.youtube} onChange={handleChange} />
         </label>
         <label>
-          X / Twitter handle (optional)
-          <input name="x" value={form.x} onChange={handleChange}/>
+          X handle (optional)
+          <input name="x" value={form.x} onChange={handleChange} />
         </label>
         <label>
           Instagram handle (optional)
-          <input name="instagram" value={form.instagram} onChange={handleChange}/>
+          <input name="instagram" value={form.instagram} onChange={handleChange} />
+        </label>
+        <label>
+          Image URL (optional)
+          <input name="imageURL" value={form.imageURL} onChange={handleChange} />
         </label>
         <div className="form-buttons">
           <button type="submit">Add Creator</button>

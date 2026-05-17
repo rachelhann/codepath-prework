@@ -1,4 +1,4 @@
-# WEB103 Prework — *Creatorverse*
+﻿# WEB103 Prework — *Creatorverse*
 
 **Submitted by:** Rachel Hanna
 
@@ -15,7 +15,7 @@
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/rachelhann/codepath-prework.git
 cd your-repo-name
 npm install
 npm run dev
@@ -76,7 +76,6 @@ Setting up React Router required some restructuring — the project initially at
 Managing PicoCSS's default styles conflicting with custom CSS was another hurdle, requiring `!important` overrides in several places to keep button styling consistent throughout the app. A shared `toUrl` utility was also extracted to avoid duplicating URL-building logic across components.
 
 ---
-
 ## License
 
 Copyright [2026] Rachel Hanna

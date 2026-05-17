@@ -16,7 +16,7 @@
 
 ```bash
 git clone https://github.com/rachelhann/codepath-prework.git
-cd your-repo-name
+cd folder-name
 npm install
 npm run dev
 ```

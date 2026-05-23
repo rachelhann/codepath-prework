@@ -6,7 +6,7 @@
 
 ### 📙 About the App
 
-**Creatorverse** is a full-stack web app where you can discover, add, edit, and delete your favorite content creators. Each creator card displays their name, description, social media links (YouTube, X, Instagram), and an optional profile image — all powered by a live Supabase database.
+**Creatorverse** is a full-stack web app where you can discover, add, edit, and delete your favorite content creators. Each creator card displays their name, description, social media links (YouTube, X, Instagram), and an optional profile image URL, all powered by a live Supabase database.
 
 **Time spent:** ~15 hours
 
@@ -16,7 +16,7 @@
 
 ```bash
 git clone https://github.com/rachelhann/codepath-prework.git
-cd your-repo-name
+cd folder-name
 npm install
 npm run dev
 ```
@@ -43,25 +43,25 @@ The following **required** functionality is completed:
 
 ## ✅ Optional Features
 
-- [✅] PicoCSS is used to style HTML elements
-- [✅] The content creator items are displayed in a creative format, like cards instead of a list
+- [✅] PicoCSS is used to style basic HTML elements
+- [✅] The content creator items are displayed in a creative format, displayed as cards instead of a list
 - [✅] An image of each content creator is shown on their content creator card
 
 ---
 
 ## ✅ Additional Features
 
-- [✅] Custom delete confirmation modal with blurred overlay — no accidental deletions!
+- [✅] Custom delete confirmation modal with blurred overlay to ensure no accidental deletions!
 - [✅] Social media links (YouTube, X, Instagram) displayed as clickable icons on each card
 - [✅] Portfolio-style hero banner with a radial teal glow effect
 - [✅] *Space Grotesk* custom font applied to creator names and headings
-- [✅] Smart URL handling — accepts both full URLs and short handles for social links
+- [✅] Smart URL handling that accepts both full URLs and short handles for social links
 
 ---
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented required features:
+Here's a walkthrough of the implemented  features:
 
 <img width="1908" height="937" alt="Image" src="https://i.imgur.com/JycEqz2.gif" />
 
@@ -71,7 +71,7 @@ GIF created with EzGIF
 
 ## Notes
 
-Setting up React Router required some restructuring — the project initially attempted to use React Router's framework mode (with a Vite plugin) before realizing the prework required library mode with `useRoutes` instead.
+Setting up React Router required some restructuring as the project initially attempted to use React Router's framework mode (with a Vite plugin) before realizing the prework required library mode with `useRoutes` instead.
 
 Managing PicoCSS's default styles conflicting with custom CSS was another hurdle, requiring `!important` overrides in several places to keep button styling consistent throughout the app. A shared `toUrl` utility was also extracted to avoid duplicating URL-building logic across components.
 

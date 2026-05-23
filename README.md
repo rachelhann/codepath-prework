@@ -63,7 +63,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of the implemented  features:
 
-![Video Walkthrough](https://i.imgur.com/JycEqz2.gif)
+![Video Walkthrough](walkthrough.gif)
 
 GIF created with EzGIF
 

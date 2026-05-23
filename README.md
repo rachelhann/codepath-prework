@@ -63,7 +63,7 @@ The following **required** functionality is completed:
 
 Here's a walkthrough of the implemented  features:
 
-<img width="1908" height="937" alt="Image" src="https://i.imgur.com/JycEqz2.gif" />
+![Video Walkthrough](https://i.imgur.com/JycEqz2.gif)
 
 GIF created with EzGIF
 

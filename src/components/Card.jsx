@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../client';
 import DeleteModal from './DeleteModal';
-import CreatorModal from './CreatorModal';
 import { toUrl } from '../utils';
 
 function Card({ id, name, description, imageURL, youtube, x, instagram, onDelete }) {
   const navigate = useNavigate();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showCreatorModal, setShowCreatorModal] = useState(false);
   const [deleting, setDeleting] = useState(false);
 
   async function handleDelete() {
@@ -18,23 +16,14 @@ function Card({ id, name, description, imageURL, youtube, x, instagram, onDelete
     else await onDelete();
   }
 
-  const creator = { id, name, description, imageURL, youtube, x, instagram };
-
   return (
-    <div className="card" onClick={() => setShowCreatorModal(true)}>
+    <div className="card" onClick={() => navigate(`/creators/${id}`, { state: { id, name, description, imageURL, youtube, x, instagram } })}>
       {showDeleteModal && (
         <DeleteModal
           name={name}
           onConfirm={handleDelete}
           onCancel={() => setShowDeleteModal(false)}
           deleting={deleting}
-        />
-      )}
-      {showCreatorModal && (
-        <CreatorModal
-          creator={creator}
-          onClose={() => setShowCreatorModal(false)}
-          onDelete={onDelete}
         />
       )}
       {imageURL && <img src={imageURL} alt={name} className="card-image" />}

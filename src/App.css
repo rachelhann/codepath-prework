@@ -129,6 +129,7 @@
   color: var(--text);
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -303,6 +304,129 @@
 .form-buttons button {
   flex: 1;
   margin: 0 !important;
+}
+
+/* ViewCreator page */
+.view-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  padding: 40px 24px;
+  box-sizing: border-box;
+}
+
+.view-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  background: #111118;
+  border: 1px solid #1a1a24;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 860px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.view-image {
+  width: 280px;
+  min-height: 320px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.view-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 36px 40px;
+  text-align: left;
+  gap: 12px;
+}
+
+.view-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.view-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 36px !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.5px !important;
+  color: #f3f4f6 !important;
+  margin: 5 !important;
+}
+
+.view-description {
+  color: #9ca3af;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.view-socials {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.view-social-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #9ca3af;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.view-social-link:hover {
+  color: #00c9b0;
+}
+
+.view-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+
+.view-back {
+  margin-top: 24px !important;
+  background: transparent !important;
+  border: 1px solid #1a1a24 !important;
+  color: #9ca3af !important;
+  font-size: 13px !important;
+  padding: 6px 16px !important;
+}
+
+.view-back:hover {
+  border-color: #00c9b0 !important;
+  color: #00c9b0 !important;
+  background: transparent !important;
+}
+
+.view-loading {
+  margin: auto;
+  color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+  .view-card {
+    flex-direction: column;
+  }
+  .view-image {
+    width: 100%;
+    min-height: 200px;
+  }
+  .view-info {
+    padding: 24px;
+  }
 }
 
 
